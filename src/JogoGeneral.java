@@ -1,24 +1,23 @@
 public class JogoGeneral {
     
-    private Dados[] dado;
+    private Dado[] dados;
     private int[] jogadas;
 
     public JogoGeneral(){
-        dado = new Dados[5];
-        jogadas = int[13];
+        dados = new Dado[5];
+        jogadas = new int[13];
     }
 
     public void rolarDados(){
-        for(i = 0; i < 5;i++){
-            dado[i].roll();
+        for(int i = 0; i < 5;i++){
+            dados[i].roll();
         }
     }
 
-    public String toString(){
-
-        for(i = 0;i < 5;i++)
-            System.out.println("Dado "+ i +":" + getSideUp());
-    }
+    /*public void toString(){
+        for(int i = 0;i < 5;i++)
+            System.out.println("Dado "+ i +":" + dado[i].getSideUp());
+    }*/
 
     public void validarJogada(){
 
