@@ -11,8 +11,10 @@ public class Campeonato{
     }
 
     public void incluirJogador(String nome,String tipoJogador){
-        jogadores[i] = new Jogador(nome,tipoJogador);
-        i++;
+        if( i > 9){System.out.println("Numero máximo de jogadores atingido");}
+        
+        else{jogadores[i] = new Jogador(nome,tipoJogador);i++;}
+        
     }
     public void iniciarCampeonato(){
 
