@@ -14,6 +14,13 @@ public class Jogador {
     }
     
     public int escolherJogada(int n){
-        return n;
+        if(jogoG.validarJogada(n) == 1)
+            return n;
+        else
+            return 0;
+
     }
+
+
+    
 }
