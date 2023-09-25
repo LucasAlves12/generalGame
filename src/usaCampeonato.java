@@ -2,9 +2,13 @@ import java.util.Scanner;
 
 public class usaCampeonato {
     public static void main(String[] args) throws Exception {
-        
+
         Scanner teclado = new Scanner(System.in);
-         String opcao;
+        String opcao;
+        Campeonato c = new Campeonato();
+        String nome;
+        String nomeAux; //variavel para remover pelo nome
+        char p; //variavel de caractere q define se é humano ou maquina
 
         do {
             System.out.println("..:: Menu interativo ::..");
@@ -20,18 +24,26 @@ public class usaCampeonato {
 
             switch (opcao.charAt(0)) {
                 case 'a':
-                    System.out.println("esse player será humano ou máquina ?");
-                    char p = teclado.next().charAt(0);
                     System.out.println("Insira seu nome: ");
-                        String nome = teclado.nextLine();
-                        teclado.nextLine();
-                    if(p == 'm' || p == 'M'){
-                       nome += "(M)";
+                    nome = teclado.nextLine();
+                    teclado.nextLine();
+                    System.out.println("Tipo de jogador (H - humano ou M - maquina):");
+                    p = teclado.next().charAt(0);
+
+                    c.incluirJogador(nome, p);
+
+                    /*if (p == 'm' || p == 'M') {
+                        nome += "(M)";
                     }
+                    else{
+                        nome += "(H)";
+                    }*/
 
                     break;
                 case 'b':
-                    System.out.println("Ola POO");
+                System.out.println("Informe o nome da pessoa que deseja remover:");
+                nomeAux = teclado.nextLine();
+
                     break;
                 case 'c':
                     System.out.println("Saindo");
@@ -56,5 +68,3 @@ public class usaCampeonato {
         teclado.close();
     }
 }
-    
-    
