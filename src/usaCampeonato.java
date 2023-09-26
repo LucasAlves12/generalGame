@@ -4,11 +4,11 @@ public class usaCampeonato {
     public static void main(String[] args) throws Exception {
 
         Scanner teclado = new Scanner(System.in);
-        String opcao;
+        char opcao;
         Campeonato c = new Campeonato();
         String nome;
-        String nomeAux; //variavel para remover pelo nome
-        char p; //variavel de caractere q define se é humano ou maquina
+        String nomeAux; // variavel para remover pelo nome
+        char p; // variavel de caractere q define se é humano ou maquina
 
         do {
             System.out.println("..:: Menu interativo ::..");
@@ -20,9 +20,9 @@ public class usaCampeonato {
             System.out.println("f - Ler os dados do campeonato em arquivo");
             System.out.println("g - Sair");
             System.out.println("Entre com uma opcao do menu: ");
-            opcao = teclado.nextLine();
+            opcao = teclado.next().charAt(0);
 
-            switch (opcao.charAt(0)) {
+            switch (opcao) {
                 case 'a':
                     System.out.println("Insira seu nome: ");
                     nome = teclado.nextLine();
@@ -32,17 +32,20 @@ public class usaCampeonato {
 
                     c.incluirJogador(nome, p);
 
-                    /*if (p == 'm' || p == 'M') {
-                        nome += "(M)";
-                    }
-                    else{
-                        nome += "(H)";
-                    }*/
+                    /*
+                     * if (p == 'm' || p == 'M') {
+                     * nome += "(M)";
+                     * }
+                     * else{
+                     * nome += "(H)";
+                     * }
+                     */
 
                     break;
                 case 'b':
-                System.out.println("Informe o nome da pessoa que deseja remover:");
-                nomeAux = teclado.nextLine();
+                    System.out.println("Informe o nome da pessoa que deseja remover:");
+                    nomeAux = teclado.nextLine();
+                    c.removerJogador(nomeAux);
 
                     break;
                 case 'c':
@@ -63,7 +66,7 @@ public class usaCampeonato {
                 default:
                     System.out.println("Opcao invalida. Tente novamente");
             }
-        } while (opcao.charAt(0) != 'g');
+        } while (opcao != 'g');
 
         teclado.close();
     }

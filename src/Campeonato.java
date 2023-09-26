@@ -2,43 +2,20 @@
 public class Campeonato {
 
     private Jogador[] jogadores;
-    private int i = 0;
+    private int i;
     private int qtdJogadores;
-    private int maxJogadores = 10;
+    private int maxJogadores;
 
     public Campeonato() {
-        this.jogadores = new Jogador[maxJogadores];
+        this.jogadores = new Jogador[this.getMaxJogadores()];
         this.i = 0;
         this.qtdJogadores = 0;
         this.maxJogadores = 10;
-    }
-
-    public int getMaxJogadores() {
-        return maxJogadores;
-    }
-
-    public void setMaxJogadores(int maxJogadores) {
-        this.maxJogadores = maxJogadores;
-    }
-
-    public Jogador[] getJogadores() {
-        return jogadores;
-    }
-
-    public void setJogadores(Jogador[] jogadores) {
-        this.jogadores = jogadores;
-    }
-
-    public int getQtdJogadores() {
-        return qtdJogadores;
-    }
-
-    public void setQtdJogadores(int qtdJogadores) {
-        this.qtdJogadores = qtdJogadores;
+        this.setQtdJogadores(0);
     }
 
     public void incluirJogador(String nome, char tipoJogador) {
-        if (i > maxJogadores) {
+        if (i > this.getMaxJogadores()) {
             System.out.println("Numero máximo de jogadores atingido");
         }
 
@@ -56,13 +33,40 @@ public class Campeonato {
                 this.getJogadores()[i] = null;
                 posicaoRemovida = i;
                 for (i = posicaoRemovida; i < this.getQtdJogadores() - 1; i++) {
-                    this.setJogadores(this.getJogadores()); //aqui ta errado
-                    this.getQtdJogadores(); //aqui ta errado tbm
+                    this.setJogadores(this.getJogadores()[i+1],i); //aqui ta errado
                 }
+                this.setQtdJogadores(this.getQtdJogadores()-1);
+
+                System.out.println("Jogador removido!\n");
             }
         }
 
     }
+
+    public int getMaxJogadores() {
+        return maxJogadores;
+    }
+
+    public void setMaxJogadores(int maxJogadores) {
+        this.maxJogadores = maxJogadores;
+    }
+
+    public Jogador[] getJogadores() {
+        return jogadores;
+    }
+
+    public void setJogadores(Jogador jogadores, int pos) {
+        this.jogadores[pos] = jogadores;
+    }
+
+    public int getQtdJogadores() {
+        return qtdJogadores;
+    }
+
+    public void setQtdJogadores(int qtdJogadores) {
+        this.qtdJogadores = qtdJogadores;
+    }
+
 
     public void iniciarCampeonato() {
 
