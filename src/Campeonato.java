@@ -20,8 +20,8 @@ public class Campeonato {
         }
 
         else {
-            jogadores[i] = new Jogador(nome, tipoJogador);
             this.setQtdJogadores(this.getQtdJogadores() + 1);
+            jogadores[i] = new Jogador(nome, tipoJogador);
             i++;
         }
     }
