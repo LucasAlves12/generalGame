@@ -114,8 +114,8 @@ public class JogoGeneral {
         
     }
 
-    public void pontuarJogada() {
-        // atualizar o vetor jogadas
+    public void pontuarJogada(int x) {
+        jogadas[i] = x;i++;
     }
 
 }
