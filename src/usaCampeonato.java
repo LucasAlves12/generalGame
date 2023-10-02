@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class usaCampeonato {
@@ -55,7 +58,25 @@ public class usaCampeonato {
                     System.out.println("Saindo");
                     break;
                 case 'e':
-                    System.out.println("Saindo");
+                    teclado.nextLine();
+                    System.out.println("Informe o caminho para salvar o arquivo (formato \"C:\\caminho\\\"):");
+                    String pathOut = teclado.nextLine();
+                    System.out.println("Informe o nome do arquivo: ");
+                    String nomeOut = teclado.nextLine();
+
+                    File simOut = new File(pathOut + "\\" + nomeOut + ".txt");
+                    try {
+                        FileOutputStream fos = new FileOutputStream(simOut);
+                        ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+                        oos.writeObject(c);
+
+                        oos.flush();
+                        oos.close();
+                        fos.close();
+                    } catch (Exception ex) {
+                        System.err.println("erro: " + ex);
+                    }
                     break;
                 case 'f':
                     System.out.println("Saindo");

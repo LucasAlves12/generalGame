@@ -18,12 +18,15 @@ public class JogoGeneral {
         }
     }
 
-    /*
-     * public void toString(){
-     * for(int i = 0;i < 5;i++)
-     * System.out.println("Dado "+ i +":" + dado[i].getSideUp());
-     * }
-     */
+    
+    public String toString(){
+        String s = "";
+        for(int i = 0;i < 5;i++){
+            s += dados[i].toString() + " ";
+        }
+        return s;
+    }
+     
 
     public int validarJogada(int x) {
         for (int i = 0; i < 5; i++) {
@@ -112,6 +115,7 @@ public class JogoGeneral {
 
     public void pontuarJogada() {
         // atualizar o vetor jogadas
+
     }
 
 }
