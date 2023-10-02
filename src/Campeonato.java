@@ -15,16 +15,22 @@ public class Campeonato {
     }
 
     public void incluirJogador(String nome, char tipoJogador) {
-        if (i > maxJogadores) {
-            System.out.println("Numero máximo de jogadores atingido");
-        }
+        if (this.getQtdJogadores() < this.getMaxJogadores()) {
+            if (tipoJogador == 'H' || tipoJogador == 'h') {
+                this.setJogadores(new Jogador(nome,tipoJogador), this.getQtdJogadores());
+                this.setQtdJogadores(this.getQtdJogadores() + 1);
+            } else if (tipoJogador == 'M' || tipoJogador == 'm') {
+                this.setJogadores(new Jogador(nome,tipoJogador), this.getQtdJogadores());
+                this.setQtdJogadores(this.getQtdJogadores() + 1);
+            } else {
+                System.out.println("Tipo de jogador invalido!");
+            }
+        } else {
+            System.out.println("Numero maximo de jogadores atingido!");
+        }   
 
-        else {
-            this.setQtdJogadores(this.getQtdJogadores() + 1);
-            jogadores[i] = new Jogador(nome, tipoJogador);
-            i++;
-        }
     }
+    
 
     public void removerJogador(String nome) {
         int posicaoRemovida = 0;

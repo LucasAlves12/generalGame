@@ -14,7 +14,7 @@ public class Jogador {
     }
 
     public int escolherJogada(int n) {
-        if (jogoG.validarJogada(n) == 1)
+        if (jogoG.validarJogada(n) != 0)
             return n;
         else
             return 0;
