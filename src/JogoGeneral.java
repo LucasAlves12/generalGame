@@ -4,12 +4,13 @@ public class JogoGeneral {
     private int[] jogadas;
     // private int[] cartela;
     private int[] cont;
-    private int i = 0;
+    private int i;
 
     public JogoGeneral() {
         dados = new Dado[5];
         jogadas = new int[13];
         cont = new int[6];
+        i = 0;
         // cartela = new int[13];
     }
 
