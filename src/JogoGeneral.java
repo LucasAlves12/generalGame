@@ -4,6 +4,7 @@ public class JogoGeneral {
     private int[] jogadas;
     // private int[] cartela;
     private int[] cont;
+    private int i = 0;
 
     public JogoGeneral() {
         dados = new Dado[5];
@@ -110,8 +111,8 @@ public class JogoGeneral {
         
     }
 
-    public void pontuarJogada() {
-        // atualizar o vetor jogadas
+    public void pontuarJogada(int x) {
+        jogadas[i] = x;i++;
     }
 
 }
