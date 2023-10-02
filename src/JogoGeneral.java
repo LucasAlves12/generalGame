@@ -75,15 +75,10 @@ public class JogoGeneral {
                 
             case 9://Full-hand: trinca e par, vale 25
                 for (int i = 0; i < 5; i++)
-                    if(cont[i] == 3)
-                        valida += 2;
-                    else if(cont[i] == 2)
-                        valida += -1;
-                
-                if(valida == 1)
-                    return 25;
-                return 0;
-
+                    if(cont[i] == 1 || cont[i] == 5)
+                    return 0;
+                return 25;
+                        
             case 10:
                 for (int i = 1; i < 5; i++)//começa do numero 2
                     if(cont[i] == 0)

@@ -15,7 +15,7 @@ public class Campeonato {
     }
 
     public void incluirJogador(String nome, char tipoJogador) {
-        if (i > this.getMaxJogadores()) {
+        if (i > maxJogadores) {
             System.out.println("Numero máximo de jogadores atingido");
         }
 
