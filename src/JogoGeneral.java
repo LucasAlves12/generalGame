@@ -1,16 +1,19 @@
 public class JogoGeneral {
 
-    private Dado[] dados;
-    private int[] jogadas;
+    private Dado[] dados = new Dado[5];
+    private int[] jogadas = new int[13];
     // private int[] cartela;
     private int[] cont;
-    private int i;
+    private int i=0;
 
     public JogoGeneral() {
-        dados = new Dado[5];
-        jogadas = new int[13];
         cont = new int[6];
-        i = 0;
+        for (int i = 0; i < 13; i++) {
+            jogadas[i] = -1;
+        }
+        for (int i = 0; i < 5; i++) {
+            dados[i] = new Dado();
+        }
         // cartela = new int[13];
     }
 
@@ -18,13 +21,14 @@ public class JogoGeneral {
         for (int i = 0; i < 5; i++) {
             dados[i].roll();
         }
+        System.out.println("Valores obtidos: "+this.toString());
     }
 
     
     public String toString(){
         String s = "";
         for(int i = 0;i < 5;i++){
-            s += dados[i].toString() + " ";
+            s += dados[i].toString() + "-";
         }
         return s;
     }
@@ -111,7 +115,8 @@ public class JogoGeneral {
     }
 
     public void pontuarJogada(int x) {
-        jogadas[i] = x;i++;
+        jogadas[i] = x;
+        i++;
     }
 
 }

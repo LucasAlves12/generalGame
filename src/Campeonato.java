@@ -7,28 +7,19 @@ public class Campeonato {
     private int maxJogadores;
 
     public Campeonato() {
-        this.jogadores = new Jogador[this.getMaxJogadores()];
-        this.i = 0;
+        this.jogadores = new Jogador[10];
         this.qtdJogadores = 0;
         this.maxJogadores = 10;
-        this.setQtdJogadores(0);
     }
 
     public void incluirJogador(String nome, char tipoJogador) {
-        if (this.getQtdJogadores() < this.getMaxJogadores()) {
-            if (tipoJogador == 'H' || tipoJogador == 'h') {
-                this.setJogadores(new Jogador(nome,tipoJogador), this.getQtdJogadores());
-                this.setQtdJogadores(this.getQtdJogadores() + 1);
-            } else if (tipoJogador == 'M' || tipoJogador == 'm') {
-                this.setJogadores(new Jogador(nome,tipoJogador), this.getQtdJogadores());
-                this.setQtdJogadores(this.getQtdJogadores() + 1);
-            } else {
-                System.out.println("Tipo de jogador invalido!");
-            }
-        } else {
-            System.out.println("Numero maximo de jogadores atingido!");
-        }   
-
+        if(qtdJogadores < maxJogadores){
+            jogadores[qtdJogadores] = new Jogador(nome, tipoJogador);
+            qtdJogadores++;
+        }
+        else {
+            System.out.println("Não é possivel inserir mais jogadores !!!");
+        }
     }
     
 
@@ -75,7 +66,17 @@ public class Campeonato {
 
 
     public void iniciarCampeonato() {
-
+        if(qtdJogadores==0){
+            System.out.println("Não há jogadores suficientes para iniciar o campeonato");
+        }
+        else{
+            for(int rodada=0; rodada<13;rodada++){
+                for(int i=0;i<qtdJogadores;i++){
+                    jogadores[i].jogarDados();
+                    jogadores[i].mostrarJogadasExecutadas();
+                }
+            }
+        }
     }
 
     public void mostrarCartela() {

@@ -48,12 +48,13 @@ public class usaCampeonato {
                 case 'b':
                     System.out.println("Informe o nome da pessoa que deseja remover:");
                     nomeAux = teclado.nextLine();
+                    teclado.nextLine();
                     c.removerJogador(nomeAux);
 
                     break;
-                case 'c':
-                    System.out.println("Saindo");
-                    break;
+                case 'c':   
+                    c.iniciarCampeonato();             
+                  break;
                 case 'd':
                     System.out.println("Saindo");
                     break;
