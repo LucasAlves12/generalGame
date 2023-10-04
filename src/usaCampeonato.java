@@ -25,25 +25,18 @@ public class usaCampeonato {
             System.out.println("f - Ler os dados do campeonato em arquivo");
             System.out.println("g - Sair");
             System.out.println("Entre com uma opcao do menu: ");
-            opcao = teclado.next().charAt(0);
+            opcao = teclado.nextLine().charAt(0);
 
             switch (opcao) {
                 case 'a':
-                    System.out.println("Insira seu nome: ");
-                    nome = teclado.nextLine();
-                    teclado.nextLine();
-                    System.out.println("Tipo de jogador (H - humano ou M - maquina):");
-                    p = teclado.next().charAt(0);
+                    
 
-                    c.incluirJogador(nome, p);
-
+                    c.incluirJogador();
 
                     break;
                 case 'b':
-                    System.out.println("Informe o nome da pessoa que deseja remover:");
-                    nomeAux = teclado.nextLine();
-                    teclado.nextLine();
-                    c.removerJogador(nomeAux);
+                    
+                    c.removerJogador();
 
                     break;
                 case 'c':

@@ -20,25 +20,39 @@ public class Campeonato {
         this.maxJogadores = 10;
     }
 
-    public void incluirJogador(String nome, char tipoJogador) {
-        if (qtdJogadores < maxJogadores) {
-            jogadores[qtdJogadores] = new Jogador(nome, tipoJogador);
+    public void incluirJogador() {
+        System.out.println("Insira seu nome: ");
+                    String nome = teclado.nextLine();
+                    //teclado.nextLine();
+                    System.out.println("Tipo de jogador (H - humano ou M - maquina):");
+                    char p = teclado.nextLine().charAt(0);
+
+        if(qtdJogadores < maxJogadores){
+            jogadores[qtdJogadores] = new Jogador(nome, p);
             qtdJogadores++;
         } else {
             System.out.println("Não é possivel inserir mais jogadores !!!");
         }
     }
+    
 
-    public void removerJogador(String nome) {
+    public void removerJogador() {
         int posicaoRemovida = 0;
-        for (i = 0; i < this.getQtdJogadores(); i++) {
-            if (jogadores[i].getNome() == nome) {
-                this.getJogadores()[i] = null;
+        String nomeAux; // variavel para remover pelo nome
+        int aux;
+
+        System.out.println("Informe o nome da pessoa que deseja remover:");
+                    nomeAux = teclado.nextLine();
+                    teclado.nextLine();
+        for (i = 0; i < qtdJogadores; i++) {
+            if (jogadores[i].getNome() == nomeAux) {
+                jogadores[i] = null;
                 posicaoRemovida = i;
-                for (i = posicaoRemovida; i < this.getQtdJogadores() - 1; i++) {
-                    this.setJogadores(this.getJogadores()[i + 1], i); // aqui ta errado
+                aux=qtdJogadores;
+                for (i = posicaoRemovida; i < aux - 1; i++) {
+                    jogadores[i] = jogadores[i+1]; //aqui ta errado
                 }
-                this.setQtdJogadores(this.getQtdJogadores() - 1);
+                qtdJogadores--;
 
                 System.out.println("Jogador removido!\n");
             }
@@ -77,10 +91,7 @@ public class Campeonato {
             for (int rodada = 0; rodada < 13; rodada++) {
                 for (int i = 0; i < qtdJogadores; i++) {
                     jogadores[i].jogarDados();
-                    System.out.println("Escolha uma jogada: "); // fazer a logica de escolher a jogada
-                    int jogada = teclado.nextInt();
-                    jogadores[i].mostrarJogadasExecutadas();
-                    jogadores[i].escolherJogada(jogada);
+                    jogadores[i].escolherJogada();
 
                 }
             }
