@@ -42,8 +42,7 @@ public class JogoGeneral {
      
 
     public int validarJogada(int x) {
-        int[] cont = new int[6];
-        int soma = 0;//para opções 7 e 8
+        int cont[] = new int[6];
 
         for (int i = 0; i < 5; i++) {
             soma = soma + dados[i].getSideUp();
@@ -116,7 +115,7 @@ public class JogoGeneral {
                 return 0;
 
             case 13: //jogada aleatória
-                /*for(int i = 0;i < 6;i++){
+                for(int i = 0;i < 6;i++){
                     soma += cont[i]*(i+1);
                 }*/
                 return soma;

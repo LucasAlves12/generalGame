@@ -29,15 +29,10 @@ public class usaCampeonato {
 
             switch (opcao) {
                 case 'a':
-                    
-
                     c.incluirJogador();
-
                     break;
                 case 'b':
-                    
                     c.removerJogador();
-
                     break;
                 case 'c':
                     c.iniciarCampeonato();
