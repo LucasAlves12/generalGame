@@ -43,7 +43,7 @@ public class Campeonato {
                     nomeAux = teclado.nextLine();
                     teclado.nextLine();
         for (i = 0; i < qtdJogadores; i++) {
-            if (jogadores[i].getNome() == nomeAux) {
+            if (jogadores[i].getNome().equals(nomeAux)) {
                 jogadores[i] = null;
                 posicaoRemovida = i;
                 aux=qtdJogadores;
