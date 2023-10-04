@@ -32,6 +32,14 @@ public class JogoGeneral {
         }
         return s;
     }
+
+    public int getPontuação(int x) {
+        return jogadas[x];
+    }
+
+    public int getJogada(int x) {
+        return jogadas[x-1];
+    }
      
 
     public int validarJogada(int x) {
@@ -114,9 +122,8 @@ public class JogoGeneral {
         
     }
 
-    public void pontuarJogada(int x) {
-        jogadas[i] = x;
-        i++;
+    public void pontuarJogada(int pos, int pont) {
+        jogadas[pos-1] = pont;
     }
 
 }
