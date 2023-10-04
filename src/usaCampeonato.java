@@ -44,6 +44,8 @@ public class usaCampeonato {
                 case 'e':
                     c.gravarEmArquivo();
                     break;
+                    
+
                 case 'f':
                    c.lerDoArquivo();
 

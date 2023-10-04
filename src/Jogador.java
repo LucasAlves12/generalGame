@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Jogador {
     private String nome;
     private char tipoJogador;
-    private JogoGeneral jogoG ;
+    private JogoGeneral jogoG;
     private Scanner teclado = new Scanner(System.in);
 
 
@@ -70,6 +70,16 @@ public class Jogador {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    public int getPontuacaoRodadaX(int x){
+            return jogoG.getPontuacao(x);
+    }
+    public int getTotal(){
+        int soma = 0;
+        for(int i = 0;i < 13;i++){
+            soma += jogoG.getPontuacao(i); 
+        }
+        return soma;
     }
 
 }

@@ -22,19 +22,18 @@ public class Campeonato {
 
     public void incluirJogador() {
         System.out.println("Insira seu nome: ");
-                    String nome = teclado.nextLine();
-                    //teclado.nextLine();
-                    System.out.println("Tipo de jogador (H - humano ou M - maquina):");
-                    char p = teclado.nextLine().charAt(0);
+        String nome = teclado.nextLine();
+        // teclado.nextLine();
+        System.out.println("Tipo de jogador (H - humano ou M - maquina):");
+        char p = teclado.nextLine().charAt(0);
 
-        if(qtdJogadores < maxJogadores){
+        if (qtdJogadores < maxJogadores) {
             jogadores[qtdJogadores] = new Jogador(nome, p);
             qtdJogadores++;
         } else {
             System.out.println("Não é possivel inserir mais jogadores !!!");
         }
     }
-    
 
     public void removerJogador() {
         int posicaoRemovida = 0;
@@ -42,15 +41,15 @@ public class Campeonato {
         int aux;
 
         System.out.println("Informe o nome da pessoa que deseja remover:");
-                    nomeAux = teclado.nextLine();
-                    teclado.nextLine();
+        nomeAux = teclado.nextLine();
+        teclado.nextLine();
         for (i = 0; i < qtdJogadores; i++) {
             if (jogadores[i].getNome().equals(nomeAux)) {
                 jogadores[i] = null;
                 posicaoRemovida = i;
-                aux=qtdJogadores;
+                aux = qtdJogadores;
                 for (i = posicaoRemovida; i < aux - 1; i++) {
-                    jogadores[i] = jogadores[i+1]; //aqui ta errado
+                    jogadores[i] = jogadores[i + 1]; // aqui ta errado
                 }
                 qtdJogadores--;
 
@@ -100,9 +99,46 @@ public class Campeonato {
 
     public void mostrarCartela() {
         System.out.println("----- Cartela de Resultados -----\n");
+        System.out.printf("%s", "\t");
 
-        for(i=0; i<qtdJogadores; i++)
-            System.out.printf("%12s", "    " + jogadores[i].getNome() + "(" + jogadores[i].getTipoJogador() + ")");
+        for (i = 0; i < qtdJogadores; i++)
+            System.out.printf("%s", "    " + jogadores[i].getNome() + "(" + jogadores[i].getTipoJogador() + ")");
+        System.out.println();
+
+        for (i = 1; i <= 13; i++)
+
+        {
+            if (i <= 6)
+                System.out.printf("%s", i + "\t");
+            else if (i == 7)
+                System.out.printf("%s", i + "(T)\t");
+            else if (i == 8)
+                System.out.printf("%s", i + "(Q)\t");
+            else if (i == 9)
+                System.out.printf("%s", i + "(F)\t");
+            else if (i == 10)
+                System.out.printf("%s", i + "(S+)\t");
+            else if (i == 11)
+                System.out.printf("%s", i + "(S-)\t");
+            else if (i == 12)
+                System.out.printf("%s", i + "(G)\t");
+            else if (i == 13)
+                System.out.printf("%s", i + "(X)\t");
+
+            for (int j = 0; j < qtdJogadores; j++) {
+                    System.out.printf("%s", jogadores[j].getPontuacaoRodadaX(i-1) + "\t\t");
+                
+            }
+            System.out.println();
+        }
+
+        System.out.println("----------------------------");
+        System.out.print("Total\t");
+
+        for (i = 0; i < qtdJogadores; i++) {
+            System.out.print(jogadores[i].getTotal() + "\t" );
+        }
+        System.out.println();
     }
 
     public void gravarEmArquivo() {
@@ -117,7 +153,7 @@ public class Campeonato {
         } catch (Exception ex) {
             System.err.println("erro: " + ex.toString());
         }
-        
+
     }
 
     public void lerDoArquivo() {
