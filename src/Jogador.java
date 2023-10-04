@@ -10,7 +10,7 @@ public class Jogador {
     }
 
     public void jogarDados() {
-        System.out.println("\nRolando dados para" + this.nome + " (" + tipoJogador + ")...");
+        System.out.println("\nRolando dados para" + nome + " (" + tipoJogador + ")...");
         jogoG.rolarDados();
     }
 

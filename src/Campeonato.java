@@ -1,3 +1,6 @@
+import java.util.Scanner;
+
+
 
 public class Campeonato {
 
@@ -5,6 +8,8 @@ public class Campeonato {
     private int i;
     private int qtdJogadores;
     private int maxJogadores;
+    private Scanner teclado = new Scanner(System.in);
+
 
     public Campeonato() {
         this.jogadores = new Jogador[10];
@@ -73,14 +78,18 @@ public class Campeonato {
             for(int rodada=0; rodada<13;rodada++){
                 for(int i=0;i<qtdJogadores;i++){
                     jogadores[i].jogarDados();
+                    System.out.println("Escolha uma jogada: "); //fazer a logica de escolher a jogada
+                    int jogada = teclado.nextInt();
                     jogadores[i].mostrarJogadasExecutadas();
+                    jogadores[i].escolherJogada(jogada);
+
                 }
             }
         }
     }
 
     public void mostrarCartela() {
-        System.out.println("    -- Cartela de Resultados--");
+        System.out.println("-- Cartela de Resultados--");
     }
 
     public void gravarEmArquivo() {
