@@ -1,5 +1,7 @@
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
@@ -52,36 +54,18 @@ public class usaCampeonato {
                     c.removerJogador(nomeAux);
 
                     break;
-                case 'c':   
-                    c.iniciarCampeonato();             
-                  break;
+                case 'c':
+                    c.iniciarCampeonato();
+                    break;
                 case 'd':
                     System.out.println("Saindo");
                     break;
                 case 'e':
-                    teclado.nextLine();
-                    System.out.println("Informe o caminho para salvar o arquivo (formato \"C:\\caminho\\\"):");
-                    String pathOut = teclado.nextLine();
-                    System.out.println("Informe o nome do arquivo: ");
-                    String nomeOut = teclado.nextLine();
-
-                    File simOut = new File(pathOut + "\\" + nomeOut + ".txt");
-                    try {
-                        FileOutputStream fos = new FileOutputStream(simOut);
-                        ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-                        oos.writeObject(c);
-
-                        oos.flush();
-                        oos.close();
-                        fos.close();
-                    } catch (Exception ex) {
-                        System.err.println("erro: " + ex);
-                    }
+                    c.gravarEmArquivo();
                     break;
                 case 'f':
-                    System.out.println("Saindo");
-                    break;
+                   c.lerDoArquivo();
+
                 case 'g':
                     System.out.println("Saindo");
                     break;
