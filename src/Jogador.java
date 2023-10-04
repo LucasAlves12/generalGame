@@ -1,4 +1,5 @@
-import java.util.Scanner;
+import java.io.Serializable;
+
 
 
 public class Jogador {
