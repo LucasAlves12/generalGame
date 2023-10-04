@@ -43,9 +43,10 @@ public class JogoGeneral {
 
     public int validarJogada(int x) {
         int cont[] = new int[6];
+        int soma = 0;
 
         for (int i = 0; i < 5; i++) {
-            soma = soma + dados[i].getSideUp();
+            soma += dados[i].getSideUp();
             cont[dados[i].getSideUp() - 1]++;
         }
         
@@ -67,7 +68,6 @@ public class JogoGeneral {
 
             case 7:        //trinca
                 for (int i = 0; i < 6; i++) {
-                    soma += cont[i] * (i + 1);
                     if (cont[i] >= 3)
                         valida = 1;
                 }
@@ -78,7 +78,6 @@ public class JogoGeneral {
 
             case 8:       //Quarteto         
                 for (int i = 0; i < 6; i++) {
-                    soma += cont[i] * (i + 1);
                     if (cont[i] >= 4)
                         valida = 1;
                 }
@@ -115,9 +114,6 @@ public class JogoGeneral {
                 return 0;
 
             case 13: //jogada aleatória
-                for(int i = 0;i < 6;i++){
-                    soma += cont[i]*(i+1);
-                }*/
                 return soma;
         }
         return 0;
