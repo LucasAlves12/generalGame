@@ -3,11 +3,11 @@ public class JogoGeneral {
     private Dado[] dados = new Dado[5];
     private int[] jogadas = new int[13];
     // private int[] cartela;
-    private int[] cont;
+    //private int[] cont;
     private int i=0;
 
     public JogoGeneral() {
-        cont = new int[6];
+        //cont = new int[6];
         for (int i = 0; i < 13; i++) {
             jogadas[i] = -1;
         }
@@ -33,7 +33,7 @@ public class JogoGeneral {
         return s;
     }
 
-    public int getPontuação(int x) {
+    public int getPontuacao(int x) {
         return jogadas[x];
     }
 
@@ -43,6 +43,8 @@ public class JogoGeneral {
      
 
     public int validarJogada(int x) {
+        int cont[] = new int[6];
+
         for (int i = 0; i < 5; i++) {
             cont[dados[i].getSideUp() - 1]++;
         }
