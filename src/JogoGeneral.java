@@ -66,7 +66,7 @@ public class JogoGeneral {
                 return cont[5] * 6; // jogada de 6
 
             case 7:        //trinca
-                for (int i = 0; i < 5; i++) {
+                for (int i = 0; i < 6; i++) {
                     soma += cont[i] * (i + 1);
                     if (cont[i] >= 3)
                         valida = 1;
@@ -77,7 +77,7 @@ public class JogoGeneral {
                 return 0;
 
             case 8:       //Quarteto         
-                for (int i = 0; i < 5; i++) {
+                for (int i = 0; i < 6; i++) {
                     soma += cont[i] * (i + 1);
                     if (cont[i] >= 4)
                         valida = 1;
@@ -88,13 +88,13 @@ public class JogoGeneral {
                 return 0;
                 
             case 9://Full-hand: trinca e par, vale 25
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 6; i++)
                     if(cont[i] == 1 || cont[i] == 5)
                     return 0;
                 return 25;
                         
             case 10:
-                for (int i = 1; i < 5; i++)//começa do numero 2
+                for (int i = 1; i < 6; i++)//começa do numero 2
                     if(cont[i] == 0)
                         return 0;
                 
@@ -108,14 +108,14 @@ public class JogoGeneral {
                 return 40;
 
             case 12: //general
-                for(int i = 0;i < 5;i++)
+                for(int i = 0;i < 6;i++)
                     if(cont[i] == 5)
                         return 50;
                 
                 return 0;
 
             case 13: //jogada aleatória
-                for(int i = 0;i < 5;i++){
+                for(int i = 0;i < 6;i++){
                     soma += cont[i]*(i+1);
                 }
                 return soma;

@@ -26,7 +26,7 @@ public class Jogador {
         
         //jogadas executadas 
         for(int i = 0; i < 13; i++){
-            if(jogoG.getPontuacao(i) != 0){
+            if(jogoG.getPontuacao(i) != -1){
                  System.out.print(jogoG.getPontuacao(i) + "\t");
             }
             else{
