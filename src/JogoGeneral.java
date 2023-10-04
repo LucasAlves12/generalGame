@@ -3,11 +3,10 @@ public class JogoGeneral {
     private Dado[] dados = new Dado[5];
     private int[] jogadas = new int[13];
     // private int[] cartela;
-    private int[] cont;
+    
     private int i=0;
 
     public JogoGeneral() {
-        cont = new int[6];
         for (int i = 0; i < 13; i++) {
             jogadas[i] = -1;
         }
@@ -33,7 +32,7 @@ public class JogoGeneral {
         return s;
     }
 
-    public int getPontuação(int x) {
+    public int getPontuacao(int x) {
         return jogadas[x];
     }
 
@@ -43,10 +42,14 @@ public class JogoGeneral {
      
 
     public int validarJogada(int x) {
+        int[] cont = new int[6];
+        int soma = 0;//para opções 7 e 8
+
         for (int i = 0; i < 5; i++) {
+            soma = soma + dados[i].getSideUp();
             cont[dados[i].getSideUp() - 1]++;
         }
-        int soma = 0;//para opções 7 e 8
+        
         int valida = 0;
 
         switch (x) {// fazer a logica de return direto de cada pontuação de cada tipo de jogada
@@ -64,7 +67,7 @@ public class JogoGeneral {
                 return cont[5] * 6; // jogada de 6
 
             case 7:        //trinca
-                for (int i = 0; i < 5; i++) {
+                for (int i = 0; i < 6; i++) {
                     soma += cont[i] * (i + 1);
                     if (cont[i] >= 3)
                         valida = 1;
@@ -75,7 +78,7 @@ public class JogoGeneral {
                 return 0;
 
             case 8:       //Quarteto         
-                for (int i = 0; i < 5; i++) {
+                for (int i = 0; i < 6; i++) {
                     soma += cont[i] * (i + 1);
                     if (cont[i] >= 4)
                         valida = 1;
@@ -86,36 +89,36 @@ public class JogoGeneral {
                 return 0;
                 
             case 9://Full-hand: trinca e par, vale 25
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 6; i++)
                     if(cont[i] == 1 || cont[i] == 5)
                     return 0;
                 return 25;
                         
             case 10:
-                for (int i = 1; i < 5; i++)//começa do numero 2
+                for (int i = 1; i < 6; i++)//começa do numero 2
                     if(cont[i] == 0)
                         return 0;
                 
                 return 30;
                  
             case 11:
-                for (int i = 0; i < 4; i++)//começa do numero 1 e vai até o 5
+                for (int i = 0; i < 5; i++)//começa do numero 1 e vai até o 5
                     if(cont[i] == 0)
                         return 0;
                 
                 return 40;
 
             case 12: //general
-                for(int i = 0;i < 5;i++)
+                for(int i = 0;i < 6;i++)
                     if(cont[i] == 5)
                         return 50;
                 
                 return 0;
 
             case 13: //jogada aleatória
-                for(int i = 0;i < 5;i++){
+                /*for(int i = 0;i < 6;i++){
                     soma += cont[i]*(i+1);
-                }
+                }*/
                 return soma;
         }
         return 0;

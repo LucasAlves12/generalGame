@@ -43,7 +43,8 @@ public class usaCampeonato {
                     c.iniciarCampeonato();
                     break;
                 case 'd':
-                    System.out.println("Saindo");
+                    c.mostrarCartela();
+
                     break;
                 case 'e':
                     c.gravarEmArquivo();
