@@ -6,7 +6,7 @@ public class Dado{
     public Dado(){
         sideUp=1;
     }
-    public void roll(){
+    public void roll(){ // O dado é jogado e um valor aleatório de 1 a 6 é escolhido
         Random r = new Random();
         sideUp = r.nextInt(6)+1; 
     }

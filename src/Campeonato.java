@@ -11,6 +11,7 @@ public class Campeonato {
     private int i;
     private int qtdJogadores;
     private int maxJogadores;
+    private File arq = new File("agenda.dat");
     private Scanner teclado = new Scanner(System.in);
 
     public Campeonato() {
@@ -87,28 +88,23 @@ public class Campeonato {
     }
 
     public void mostrarCartela() {
-        System.out.println("-- Cartela de Resultados--");
+        System.out.println("----- Cartela de Resultados -----\n");
+
+        for(i=0; i<qtdJogadores; i++)
+            System.out.printf("%12s", "    " + jogadores[i].getNome() + "(" + jogadores[i].getTipoJogador() + ")");
     }
 
     public void gravarEmArquivo() {
-        teclado.nextLine();
-        System.out.println("Informe o caminho para salvar o arquivo (formato \"C:\\caminho\\\"):");
-        String pathOut = teclado.nextLine();
-        System.out.println("Informe o nome do arquivo: ");
-        String nomeOut = teclado.nextLine();
-
-        File simOut = new File(pathOut + "\\" + nomeOut + ".txt");
         try {
-            FileOutputStream fos = new FileOutputStream(simOut);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-            oos.writeObject(c);
-
+            FileOutputStream fout = new FileOutputStream(arq);
+            ObjectOutputStream oos = new ObjectOutputStream(fout);
+            // gravando o vetor de pessoas no arquivo
+            oos.writeObject(jogadores);
             oos.flush();
             oos.close();
-            fos.close();
+            fout.close();
         } catch (Exception ex) {
-            System.err.println("erro: " + ex);
+            System.err.println("erro: " + ex.toString());
         }
         
     }

@@ -37,14 +37,6 @@ public class usaCampeonato {
 
                     c.incluirJogador(nome, p);
 
-                    /*
-                     * if (p == 'm' || p == 'M') {
-                     * nome += "(M)";
-                     * }
-                     * else{
-                     * nome += "(H)";
-                     * }
-                     */
 
                     break;
                 case 'b':
