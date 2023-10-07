@@ -20,41 +20,22 @@ public class Jogador {
         jogoG.rolarDados();
     }
 
-    public void escolherJogada() {
-        int pontuacao;
-        //jogadas possiveis
-        System.out.println("1\t2\t3\t4\t5\t6\t7(T)\t8(Q)\t9(F)\t10(S+)\t11(S-)\t12(G)\t13(X)");
-        
-        //jogadas executadas 
-        for(int i = 0; i < 13; i++){
-            if(jogoG.getPontuacao(i) != -1){
-                 System.out.print(jogoG.getPontuacao(i) + "\t");
-            }
-            else{
-                System.out.print("-\t");
-            }
-        }
-        System.out.println("\nEscolha uma jogada: ");
-        int jogadaEscolhida = teclado.nextInt();    
-        
-        if(jogoG.getJogada(jogadaEscolhida) == -1){
-            pontuacao = jogoG.validarJogada(jogadaEscolhida);
-        }
-        else{
-            do{
-                System.out.println("Jogada já executada, escolha outra jogada: ");
-                jogadaEscolhida = teclado.nextInt();
-            }while(jogoG.getJogada(jogadaEscolhida) != -1);
-            
-            pontuacao = jogoG.validarJogada(jogadaEscolhida);
-        }
+  
 
+    public int setValidaJogada(int jogadaEscolhida) {
+        return jogoG.getJogada(jogadaEscolhida);
+    } 
+
+    public void getPontuaJogada(int jogadaEscolhida, int pontuacao) {
         jogoG.pontuarJogada(jogadaEscolhida, pontuacao);
-
     }
 
-    public void mostrarJogadasExecutadas(){
-        
+    public int setJogada(int x) {
+        return jogoG.getJogada(x);
+    }
+
+    public int setPontuacao(int x) {
+        return jogoG.getPontuacao(x);
     }
 
     public char getTipoJogador() {

@@ -21,11 +21,16 @@ public class Campeonato {
     }
 
     public void incluirJogador() {
+        char p;
+
         System.out.println("Insira seu nome: ");
         String nome = teclado.nextLine();
-        // teclado.nextLine();
-        System.out.println("Tipo de jogador (H - humano ou M - maquina):");
-        char p = teclado.nextLine().charAt(0);
+        
+        do{
+            System.out.println("Tipo de jogador (H - humano ou M - maquina):");
+            p = teclado.nextLine().charAt(0);
+        }while(p != 'H' && p != 'M')
+        
 
         if (qtdJogadores < maxJogadores) {
             jogadores[qtdJogadores] = new Jogador(nome, p);
@@ -49,7 +54,7 @@ public class Campeonato {
                 posicaoRemovida = i;
                 aux = qtdJogadores;
                 for (i = posicaoRemovida; i < aux - 1; i++) {
-                    jogadores[i] = jogadores[i + 1]; // aqui ta errado
+                    jogadores[i] = jogadores[i + 1];
                 }
                 qtdJogadores--;
 
@@ -84,13 +89,45 @@ public class Campeonato {
     }
 
     public void iniciarCampeonato() {
+        int pontuacao;
+        int jogadaEscolhida;
+
         if (qtdJogadores == 0) {
             System.out.println("Não há jogadores suficientes para iniciar o campeonato");
         } else {
             for (int rodada = 0; rodada < 13; rodada++) {
                 for (int i = 0; i < qtdJogadores; i++) {
                     jogadores[i].jogarDados();
-                    jogadores[i].escolherJogada();
+
+                    // jogadas possiveis
+                    System.out.println("1\t2\t3\t4\t5\t6\t7(T)\t8(Q)\t9(F)\t10(S+)\t11(S-)\t12(G)\t13(X)");
+
+                    // jogadas executadas
+                    for ( i = 0; i < 13; i++) {
+                        if (jogadores[i].setPontuacao(i) != -1) {
+                            System.out.print(jogadores[i].setPontuacao(i) + "\t");
+                        } else {
+                            System.out.print("-\t");
+                        }
+                    }
+                    do{
+                        System.out.println("\nEscolha uma jogada: ");
+                        jogadaEscolhida = teclado.nextInt();
+                    }while(jogadaEscolhida < 1 || jogadaEscolhida > 13)
+                    
+
+                    if (jogadores[i].setJogada(jogadaEscolhida) == -1) {
+                        pontuacao = jogadores[i].setValidaJogada(jogadaEscolhida);
+                    } else {
+                        do {
+                            System.out.println("Jogada já executada, escolha outra jogada: ");
+                            jogadaEscolhida = teclado.nextInt();
+                        } while (jogadores[i].setJogada(jogadaEscolhida) != -1);
+
+                        pontuacao = jogadores[i].setValidaJogada(jogadaEscolhida);
+                    }
+
+                    jogadores[i].getPontuaJogada(jogadaEscolhida, pontuacao);
 
                 }
             }
@@ -126,8 +163,8 @@ public class Campeonato {
                 System.out.printf("%s", i + "(X)\t");
 
             for (int j = 0; j < qtdJogadores; j++) {
-                    System.out.printf("%s", jogadores[j].getPontuacaoRodadaX(i-1) + "\t\t");
-                
+                System.out.printf("%s", jogadores[j].getPontuacaoRodadaX(i - 1) + "\t\t");
+
             }
             System.out.println();
         }
@@ -136,7 +173,7 @@ public class Campeonato {
         System.out.print("Total\t");
 
         for (i = 0; i < qtdJogadores; i++) {
-            System.out.print(jogadores[i].getTotal() + "\t" );
+            System.out.print(jogadores[i].getTotal() + "\t");
         }
         System.out.println();
     }
