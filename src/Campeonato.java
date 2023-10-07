@@ -29,7 +29,7 @@ public class Campeonato {
         do{
             System.out.println("Tipo de jogador (H - humano ou M - maquina):");
             p = teclado.nextLine().charAt(0);
-        }while(p != 'H' && p != 'M')
+        }while(p != 'H' && p != 'M');
         
 
         if (qtdJogadores < maxJogadores) {
@@ -113,7 +113,7 @@ public class Campeonato {
                     do{
                         System.out.println("\nEscolha uma jogada: ");
                         jogadaEscolhida = teclado.nextInt();
-                    }while(jogadaEscolhida < 1 || jogadaEscolhida > 13)
+                    }while(jogadaEscolhida < 1 || jogadaEscolhida > 13);
                     
 
                     if (jogadores[i].setJogada(jogadaEscolhida) == -1) {
