@@ -1,12 +1,12 @@
 import java.io.Serializable;
-
+import java.util.Random;
 
 
 public class Jogador {
     private String nome;
     private char tipoJogador;
     private JogoGeneral jogoG;
-    private Scanner teclado = new Scanner(System.in);
+
 
 
     public Jogador(String nome, char tipoJogador) {
@@ -22,19 +22,19 @@ public class Jogador {
 
   
 
-    public int setValidaJogada(int jogadaEscolhida) {
-        return jogoG.getJogada(jogadaEscolhida);
+    public int getValidaJogada(int jogadaEscolhida) {
+        return jogoG.validarJogada(jogadaEscolhida);
     } 
 
     public void getPontuaJogada(int jogadaEscolhida, int pontuacao) {
         jogoG.pontuarJogada(jogadaEscolhida, pontuacao);
     }
 
-    public int setJogada(int x) {
+    public int getJogada(int x) {
         return jogoG.getJogada(x);
     }
 
-    public int setPontuacao(int x) {
+    public int getPontuacao(int x) {
         return jogoG.getPontuacao(x);
     }
 
@@ -62,6 +62,11 @@ public class Jogador {
             soma += jogoG.getPontuacao(i); 
         }
         return soma;
+    }
+
+    public int maquina(){
+        Random r = new Random();
+        return r.nextInt(13)+1;
     }
 
 }

@@ -25,12 +25,11 @@ public class Campeonato {
 
         System.out.println("Insira seu nome: ");
         String nome = teclado.nextLine();
-        
-        do{
+
+        do {
             System.out.println("Tipo de jogador (H - humano ou M - maquina):");
             p = teclado.nextLine().charAt(0);
-        }while(p != 'H' && p != 'M');
-        
+        } while (p != 'H' && p != 'M');
 
         if (qtdJogadores < maxJogadores) {
             jogadores[qtdJogadores] = new Jogador(nome, p);
@@ -91,46 +90,77 @@ public class Campeonato {
     public void iniciarCampeonato() {
         int pontuacao;
         int jogadaEscolhida;
+        int auxjogada;
 
         if (qtdJogadores == 0) {
             System.out.println("Não há jogadores suficientes para iniciar o campeonato");
         } else {
+
             for (int rodada = 0; rodada < 13; rodada++) {
                 for (int i = 0; i < qtdJogadores; i++) {
                     jogadores[i].jogarDados();
 
-                    // jogadas possiveis
-                    System.out.println("1\t2\t3\t4\t5\t6\t7(T)\t8(Q)\t9(F)\t10(S+)\t11(S-)\t12(G)\t13(X)");
+                    if (jogadores[i].getTipoJogador() == 'H') {
 
-                    // jogadas executadas
-                    for ( i = 0; i < 13; i++) {
-                        if (jogadores[i].setPontuacao(i) != -1) {
-                            System.out.print(jogadores[i].setPontuacao(i) + "\t");
-                        } else {
-                            System.out.print("-\t");
+                        // jogadas possiveis
+                        System.out.println("1\t2\t3\t4\t5\t6\t7(T)\t8(Q)\t9(F)\t10(S+)\t11(S-)\t12(G)\t13(X)");
+
+                        // jogadas executadas
+                        for (int j = 0; j < 13; j++) {
+                            auxjogada = jogadores[i].getPontuacao(j);
+                            if (auxjogada != -1) {
+                                System.out.print(auxjogada + "\t");
+                            } else {
+                                System.out.print("-\t");
+                            }
                         }
-                    }
-                    do{
-                        System.out.println("\nEscolha uma jogada: ");
-                        jogadaEscolhida = teclado.nextInt();
-                    }while(jogadaEscolhida < 1 || jogadaEscolhida > 13);
-                    
-
-                    if (jogadores[i].setJogada(jogadaEscolhida) == -1) {
-                        pontuacao = jogadores[i].setValidaJogada(jogadaEscolhida);
-                    } else {
                         do {
-                            System.out.println("Jogada já executada, escolha outra jogada: ");
+                            System.out.println("\nEscolha uma jogada: ");
                             jogadaEscolhida = teclado.nextInt();
-                        } while (jogadores[i].setJogada(jogadaEscolhida) != -1);
+                        } while (jogadaEscolhida < 1 || jogadaEscolhida > 13);
 
-                        pontuacao = jogadores[i].setValidaJogada(jogadaEscolhida);
+                        if (jogadores[i].getJogada(jogadaEscolhida) == -1) {
+                            pontuacao = jogadores[i].getValidaJogada(jogadaEscolhida);
+                        } else {
+                            do {
+                                System.out.println("Jogada já executada, escolha outra jogada: ");
+                                jogadaEscolhida = teclado.nextInt();
+                            } while (jogadores[i].getJogada(jogadaEscolhida) != -1);
+
+                            pontuacao = jogadores[i].getValidaJogada(jogadaEscolhida);
+                        }
+
+                        jogadores[i].getPontuaJogada(jogadaEscolhida, pontuacao);
+
+                    } else if (jogadores[i].getTipoJogador() == 'M') {
+                        int jogadaMaquina = 1;
+                        do {
+                            jogadaMaquina = jogadores[i].maquina();
+                        } while (jogadores[i].getJogada(jogadaMaquina) != -1);
+
+                        System.out.println("Jogada escolhida por " + jogadores[i].getNome() + " (M): " + jogadaMaquina);
+
+                        pontuacao = jogadores[i].getValidaJogada(jogadaMaquina);
+                        jogadores[i].getPontuaJogada(jogadaMaquina, pontuacao);
+
+                        // jogadas possiveis
+                        System.out.println("1\t2\t3\t4\t5\t6\t7(T)\t8(Q)\t9(F)\t10(S+)\t11(S-)\t12(G)\t13(X)");
+
+                        // jogadas executadas
+                        for (int j = 0; j < 13; j++) {
+                            auxjogada = jogadores[i].getPontuacao(j);
+                            if (auxjogada != -1) {
+                                System.out.print(auxjogada + "\t");
+                            } else {
+                                System.out.print("-\t");
+                            }
+                        }
+                        System.out.println("\n");
                     }
-
-                    jogadores[i].getPontuaJogada(jogadaEscolhida, pontuacao);
-
                 }
+
             }
+
         }
     }
 
@@ -139,7 +169,7 @@ public class Campeonato {
         System.out.printf("%s", "\t");
 
         for (i = 0; i < qtdJogadores; i++)
-            System.out.printf("%s", "    " + jogadores[i].getNome() + "(" + jogadores[i].getTipoJogador() + ")");
+            System.out.printf("%s", "\t" + jogadores[i].getNome() + "(" + jogadores[i].getTipoJogador() + ")");
         System.out.println();
 
         for (i = 1; i <= 13; i++)
@@ -163,19 +193,19 @@ public class Campeonato {
                 System.out.printf("%s", i + "(X)\t");
 
             for (int j = 0; j < qtdJogadores; j++) {
-                System.out.printf("%s", jogadores[j].getPontuacaoRodadaX(i - 1) + "\t\t");
+                System.out.printf("%s", "\t" + jogadores[j].getPontuacaoRodadaX(i - 1) + "\t");
 
             }
             System.out.println();
         }
 
-        System.out.println("----------------------------");
+        System.out.println("---------------------------------------");
         System.out.print("Total\t");
 
         for (i = 0; i < qtdJogadores; i++) {
-            System.out.print(jogadores[i].getTotal() + "\t");
+            System.out.print("\t" + jogadores[i].getTotal() + "\t");
         }
-        System.out.println();
+        System.out.println("\n");
     }
 
     public void gravarEmArquivo() {
@@ -194,15 +224,8 @@ public class Campeonato {
     }
 
     public void lerDoArquivo() {
-        teclado.nextLine();
-        System.out.println("Informe o caminho para ler o arquivo (formato \"C:\\caminho\\\"):");
-        String pathIn = teclado.nextLine();
-        System.out.println("Informe o nome do arquivo: ");
-        String nomeIn = teclado.nextLine();
-
-        File simIn = new File(pathIn + "\\" + nomeIn + ".txt");
         try {
-            FileInputStream fin = new FileInputStream(simIn);
+            FileInputStream fin = new FileInputStream(arq);
             ObjectInputStream oin = new ObjectInputStream(fin);
 
             // Lendo os objetos de um arquivo e fazendo a coercao de tipos
@@ -210,10 +233,12 @@ public class Campeonato {
             Jogador[] jogadoresArq = (Jogador[]) oin.readObject();
             oin.close();
             fin.close();
-
-            // for por elementos de jogadores arq
-            for (Jogador j : jogadoresArq) {
-                j.mostrarJogadasExecutadas();
+            jogadores = jogadoresArq;
+            qtdJogadores = 0;
+            i = 0;
+            while (jogadores[i] != null) {
+                qtdJogadores++;
+                i++;
             }
         } catch (Exception ex) {
             System.err.println("erro: " + ex.toString());
