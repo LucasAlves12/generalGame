@@ -44,11 +44,9 @@ public class usaCampeonato {
                 case 'e':
                     c.gravarEmArquivo();
                     break;
-                    
-
                 case 'f':
                    c.lerDoArquivo();
-
+                   break;
                 case 'g':
                     System.out.println("Saindo");
                     break;

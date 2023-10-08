@@ -217,6 +217,8 @@ public class Campeonato {
             oos.flush();
             oos.close();
             fout.close();
+
+            System.out.println("Dados gravados com sucesso!\n");
         } catch (Exception ex) {
             System.err.println("erro: " + ex.toString());
         }
@@ -240,6 +242,8 @@ public class Campeonato {
                 qtdJogadores++;
                 i++;
             }
+
+            System.out.println("Dados lidos com sucesso!\n");
         } catch (Exception ex) {
             System.err.println("erro: " + ex.toString());
         }

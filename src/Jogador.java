@@ -2,7 +2,7 @@ import java.io.Serializable;
 import java.util.Random;
 
 
-public class Jogador {
+public class Jogador implements Serializable{
     private String nome;
     private char tipoJogador;
     private JogoGeneral jogoG;
