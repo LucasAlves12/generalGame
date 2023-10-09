@@ -74,16 +74,13 @@ public class Campeonato {
         int jogadaEscolhida;
         int auxjogada;
 
-<<<<<<< HEAD
+
         for(int i=0; i<qtdJogadores; i++) {
             jogadores[i].zerarJogadas();
         }
 
         if (qtdJogadores == 0) {
-=======
-        if (qtdJogadores == 0) //0 jogadores, impossível de se jogar
->>>>>>> origin/main
-            System.out.println("Não há jogadores suficientes para iniciar o campeonato");
+            System.out.println("Não há jogadores suficientes para iniciar o campeonato"); 
 
          else {
 
