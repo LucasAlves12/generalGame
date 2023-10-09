@@ -15,13 +15,15 @@ public class Jogador implements Serializable{
         jogoG = new JogoGeneral();
     }
 
+
+    //sorteia os 5 números da rodada
     public void jogarDados() {
         System.out.println("\nRolando dados para " + nome + " (" + tipoJogador + ")...");
         jogoG.rolarDados();
     }
 
   
-
+    //Valida se a jogada está dentro das regras do
     public int getValidaJogada(int jogadaEscolhida) {
         return jogoG.validarJogada(jogadaEscolhida);
     } 
@@ -30,9 +32,7 @@ public class Jogador implements Serializable{
         jogoG.pontuarJogada(jogadaEscolhida, pontuacao);
     }
 
-    public int getJogada(int x) {
-        return jogoG.getJogada(x);
-    }
+    
 
     public int getPontuacao(int x) {
         return jogoG.getPontuacao(x);
