@@ -1,15 +1,17 @@
 import java.io.Serializable;
-import java.util.Random;
-
 
 public class Jogador implements Serializable{
     private String nome;
     private char tipoJogador;
     private JogoGeneral jogoG;
 
-
-
     //Construtor da classe
+    public Jogador() {
+        this.nome = "noName";
+        this.tipoJogador = '-';
+    }
+
+    //Construtor da classe carregado com os dados do jogador
     public Jogador(String nome, char tipoJogador) {
         this.nome = nome;
         this.tipoJogador = tipoJogador;
@@ -55,13 +57,34 @@ public class Jogador implements Serializable{
         return soma;
     }
 
-    //Se for um jogador maquina é necessário criar um eandom e o sorteio de 1 a 13 
-    //do numero int que é gerado para a escolha do numero da cartela
+    //metodo para logica da maquina
     public int maquina(){
-        Random r = new Random();
-        return r.nextInt(13)+1;
+        int maior = 0;
+        int jogadaEscolhida = 0;
+        for(int i = 0;i < 13;i++){
+            if(jogoG.getPontuacao(i) == -1){
+                if(getValidaJogada(i+1) > maior){
+                    maior = getValidaJogada(i+1);
+                    jogadaEscolhida = i+1;
+                }
+            }
+        }
+
+        if(jogadaEscolhida==0){ // se todas as jogadas ja foram feitas
+            for(int i=12; i>=0;i--){
+                if(jogoG.getPontuacao(i) == -1){
+                    jogadaEscolhida = i+1;
+                    break;
+                }
+            }
+
+        }
+
+
+        return jogadaEscolhida;
     }
 
+    //metodo para zerar as jogadas
     public void zerarJogadas(){
         for(int i = 1;i <= 13;i++){
             jogoG.pontuarJogada(i, -1);

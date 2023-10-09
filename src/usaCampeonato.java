@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class usaCampeonato {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         Scanner teclado = new Scanner(System.in);
         char opcao;

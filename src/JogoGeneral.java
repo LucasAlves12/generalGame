@@ -42,7 +42,7 @@ public class JogoGeneral implements Serializable{
             cont[dados[i].getSideUp() - 1]++;
         }
         
-        boolean valida = false;
+        //boolean valida = false;
 
         switch (x) {// fazer a logica de return direto de cada pontuação de cada tipo de jogada
             // 13 cases, 13 tipos de jogada

@@ -80,8 +80,8 @@ public class Campeonato {
         }
 
         if (qtdJogadores == 0) {
-            System.out.println("Não há jogadores suficientes para iniciar o campeonato"); 
-
+            System.out.println("Não há jogadores suficientes para iniciar o campeonato"); // se não houver jogadores suficientes
+        }
          else {
 
             for (int rodada = 0; rodada < 13; rodada++) {
@@ -121,10 +121,9 @@ public class Campeonato {
                         jogadores[i].getPontuaJogada(jogadaEscolhida, pontuacao);
 
                     } else if (jogadores[i].getTipoJogador() == 'M') {
-                        int jogadaMaquina = 1;
-                        do {
-                            jogadaMaquina = jogadores[i].maquina();
-                        } while (jogadores[i].getPontuacao(jogadaMaquina-1) != -1);
+                    
+                         int   jogadaMaquina = jogadores[i].maquina();
+                     
 
                         System.out.println("Jogada escolhida por " + jogadores[i].getNome() + " (M): " + jogadaMaquina);
 
@@ -187,9 +186,10 @@ public class Campeonato {
             }
             System.out.println();
         }
-
-        System.out.println("---------------------------------------");
-        System.out.print("Total\t");
+        for(int i=0;i<qtdJogadores;i++){
+            System.out.print("---------------------");
+        }
+        System.out.print("\nTotal\t");
 
         for (i = 0; i < qtdJogadores; i++) {
             System.out.print("\t" + jogadores[i].getTotal() + "\t");
