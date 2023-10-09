@@ -123,13 +123,13 @@ public class Campeonato {
                             jogadaEscolhida = teclado.nextInt();
                         } while (jogadaEscolhida < 1 || jogadaEscolhida > 13);
 
-                        if (jogadores[i].getJogada(jogadaEscolhida) == -1) {
+                        if (jogadores[i].getPontuacao(jogadaEscolhida-1) == -1) {
                             pontuacao = jogadores[i].getValidaJogada(jogadaEscolhida);
                         } else {
                             do {
                                 System.out.println("Jogada já executada, escolha outra jogada: ");
                                 jogadaEscolhida = teclado.nextInt();
-                            } while (jogadores[i].getJogada(jogadaEscolhida) != -1);
+                            } while (jogadores[i].getPontuacao(jogadaEscolhida-1) != -1);
 
                             pontuacao = jogadores[i].getValidaJogada(jogadaEscolhida);
                         }
@@ -140,7 +140,7 @@ public class Campeonato {
                         int jogadaMaquina = 1;
                         do {
                             jogadaMaquina = jogadores[i].maquina();
-                        } while (jogadores[i].getJogada(jogadaMaquina) != -1);
+                        } while (jogadores[i].getPontuacao(jogadaMaquina-1) != -1);
 
                         System.out.println("Jogada escolhida por " + jogadores[i].getNome() + " (M): " + jogadaMaquina);
 

@@ -6,6 +6,8 @@ public class JogoGeneral implements Serializable{
     private Dado[] dados = new Dado[5];
     private int[] jogadas = new int[13];
 
+
+    //Construtor inicializa o objeto dados e as jogadas
     public JogoGeneral() {
         for (int i = 0; i < 13; i++) {
             jogadas[i] = -1;
@@ -13,32 +15,22 @@ public class JogoGeneral implements Serializable{
         for (int i = 0; i < 5; i++) {
             dados[i] = new Dado();
         }
-        // cartela = new int[13];
     }
 
-    public void rolarDados() {
+    //Dados são sorteados aleatoriamente a cada rodada
+    public void rolarDados() { 
         for (int i = 0; i < 5; i++) {
             dados[i].roll();
         }
         System.out.println("Valores obtidos: "+this.toString());
     }
 
-    
-    public String toString(){
-        String s = "";
-        for(int i = 0;i < 5;i++){
-            s += dados[i].toString() + "-";
-        }
-        return s;
-    }
-
+    //getters da
     public int getPontuacao(int x) {
         return jogadas[x];
     }
 
-    public int getJogada(int x) {
-        return jogadas[x-1];
-    }
+    
      
 
     public int validarJogada(int x) {
@@ -122,6 +114,14 @@ public class JogoGeneral implements Serializable{
 
     public void pontuarJogada(int pos, int pont) {
         jogadas[pos-1] = pont;
+    }
+
+    public String toString(){
+        String s = "";
+        for(int i = 0;i < 5;i++){
+            s += dados[i].toString() + "-";
+        }
+        return s;
     }
 
 }
