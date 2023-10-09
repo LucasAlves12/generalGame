@@ -6,7 +6,11 @@ public class usaCampeonato {
         Scanner teclado = new Scanner(System.in);
         char opcao;
         Campeonato c = new Campeonato();
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> origin/main
         do {
             System.out.println("..:: Menu interativo ::..");
             System.out.println("a - Incluir jogador");

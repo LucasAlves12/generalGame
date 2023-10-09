@@ -9,6 +9,7 @@ public class Jogador implements Serializable{
 
 
 
+    //Construtor da classe
     public Jogador(String nome, char tipoJogador) {
         this.nome = nome;
         this.tipoJogador = tipoJogador;
@@ -23,7 +24,7 @@ public class Jogador implements Serializable{
     }
 
   
-    //Valida se a jogada está dentro das regras do
+    //Valida se a jogada está dentro das regras do jogo
     public int getValidaJogada(int jogadaEscolhida) {
         return jogoG.validarJogada(jogadaEscolhida);
     } 
@@ -33,7 +34,7 @@ public class Jogador implements Serializable{
     }
 
     
-
+    //getters da classe
     public int getPontuacao(int x) {
         return jogoG.getPontuacao(x);
     }
@@ -42,20 +43,10 @@ public class Jogador implements Serializable{
         return tipoJogador;
     }
 
-    public void setTipoJogador(char tipoJogador) {
-        this.tipoJogador = tipoJogador;
-    }
-
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-    public int getPontuacaoRodadaX(int x){
-            return jogoG.getPontuacao(x);
-    }
     public int getTotal(){
         int soma = 0;
         for(int i = 0;i < 13;i++){
@@ -64,6 +55,8 @@ public class Jogador implements Serializable{
         return soma;
     }
 
+    //Se for um jogador maquina é necessário criar um eandom e o sorteio de 1 a 13 
+    //do numero int que é gerado para a escolha do numero da cartela
     public int maquina(){
         Random r = new Random();
         return r.nextInt(13)+1;

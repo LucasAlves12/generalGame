@@ -14,12 +14,14 @@ public class Campeonato {
     private File arq = new File("jogoGeneral.dat");
     private Scanner teclado = new Scanner(System.in);
 
+    //Construtor, limite de 10 jogadores na partida
     public Campeonato() {
         this.jogadores = new Jogador[10];
         this.qtdJogadores = 0;
         this.maxJogadores = 10;
     }
 
+    //adiciona o jogador informado pelo usuário e seu tipo também
     public void incluirJogador() {
         char p;
 
@@ -28,7 +30,7 @@ public class Campeonato {
 
         do {
             System.out.println("Tipo de jogador (H - humano ou M - maquina):");
-            p = teclado.nextLine().charAt(0);
+            p = teclado.nextLine().toUpperCase().charAt(0);
         } while (p != 'H' && p != 'M');
 
         if (qtdJogadores < maxJogadores) {
@@ -39,10 +41,13 @@ public class Campeonato {
         }
     }
 
+    //Remove o jogador pelo nome digitado pelo usuário
     public void removerJogador() {
         int posicaoRemovida = 0;
         String nomeAux; // variavel para remover pelo nome
         int aux;
+
+        
 
         System.out.println("Informe o nome da pessoa que deseja remover:");
         nomeAux = teclado.nextLine();
@@ -63,42 +68,24 @@ public class Campeonato {
 
     }
 
-    public int getMaxJogadores() {
-        return maxJogadores;
-    }
-
-    public void setMaxJogadores(int maxJogadores) {
-        this.maxJogadores = maxJogadores;
-    }
-
-    public Jogador[] getJogadores() {
-        return jogadores;
-    }
-
-    public void setJogadores(Jogador jogadores, int pos) {
-        this.jogadores[pos] = jogadores;
-    }
-
-    public int getQtdJogadores() {
-        return qtdJogadores;
-    }
-
-    public void setQtdJogadores(int qtdJogadores) {
-        this.qtdJogadores = qtdJogadores;
-    }
-
+    //Inicar campeonato: metódo em que o campeonato é inicializado e as rodadas ão executadas
     public void iniciarCampeonato() {
         int pontuacao;
         int jogadaEscolhida;
         int auxjogada;
 
+<<<<<<< HEAD
         for(int i=0; i<qtdJogadores; i++) {
             jogadores[i].zerarJogadas();
         }
 
         if (qtdJogadores == 0) {
+=======
+        if (qtdJogadores == 0) //0 jogadores, impossível de se jogar
+>>>>>>> origin/main
             System.out.println("Não há jogadores suficientes para iniciar o campeonato");
-        } else {
+
+         else {
 
             for (int rodada = 0; rodada < 13; rodada++) {
                 for (int i = 0; i < qtdJogadores; i++) {
@@ -168,12 +155,13 @@ public class Campeonato {
         }
     }
 
+    //Mostra a pontuação do ultimo jogo executado
     public void mostrarCartela() {
         System.out.println("----- Cartela de Resultados -----\n");
         System.out.printf("%s", "\t");
 
         for (i = 0; i < qtdJogadores; i++)
-            System.out.printf("%s", "\t" + jogadores[i].getNome() + "(" + jogadores[i].getTipoJogador() + ")");
+            System.out.printf("%s", "\t" + jogadores[i].getNome() + "(" + jogadores[i].getTipoJogador() + ")\t");
         System.out.println();
 
         for (i = 1; i <= 13; i++)
@@ -197,7 +185,7 @@ public class Campeonato {
                 System.out.printf("%s", i + "(X)\t");
 
             for (int j = 0; j < qtdJogadores; j++) {
-                System.out.printf("%s", "\t" + jogadores[j].getPontuacaoRodadaX(i - 1) + "\t");
+                System.out.printf("%s", "\t" + jogadores[j].getPontuacao(i - 1) + "\t");
 
             }
             System.out.println();
@@ -212,6 +200,8 @@ public class Campeonato {
         System.out.println("\n");
     }
 
+
+    //grava em arquivo .dat a rodada executada
     public void gravarEmArquivo() {
         try {
             FileOutputStream fout = new FileOutputStream(arq);
@@ -229,6 +219,7 @@ public class Campeonato {
 
     }
 
+    //le os dados do arquvo .dat
     public void lerDoArquivo() {
         try {
             FileInputStream fin = new FileInputStream(arq);
