@@ -11,14 +11,16 @@ public class Campeonato {
     private int i;
     private int qtdJogadores;
     private int maxJogadores;
-    private File arq = new File("jogoGeneral.dat");
-    private Scanner teclado = new Scanner(System.in);
+    private File arq;
+    private Scanner teclado;
 
     //Construtor, limite de 10 jogadores na partida
     public Campeonato() {
         this.jogadores = new Jogador[10];
         this.qtdJogadores = 0;
         this.maxJogadores = 10;
+        this.arq = new File("jogoGeneral.dat");
+        this.teclado = new Scanner(System.in);
     }
 
     //adiciona o jogador informado pelo usuário e seu tipo também
@@ -82,7 +84,7 @@ public class Campeonato {
         if (qtdJogadores == 0) {
             System.out.println("Não há jogadores suficientes para iniciar o campeonato"); // se não houver jogadores suficientes
         }
-         else {
+        else {
 
             for (int rodada = 0; rodada < 13; rodada++) {
                 for (int i = 0; i < qtdJogadores; i++) {
