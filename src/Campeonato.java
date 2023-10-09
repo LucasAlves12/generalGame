@@ -92,6 +92,10 @@ public class Campeonato {
         int jogadaEscolhida;
         int auxjogada;
 
+        for(int i=0; i<qtdJogadores; i++) {
+            jogadores[i].zerarJogadas();
+        }
+
         if (qtdJogadores == 0) {
             System.out.println("Não há jogadores suficientes para iniciar o campeonato");
         } else {
@@ -232,15 +236,16 @@ public class Campeonato {
 
             // Lendo os objetos de um arquivo e fazendo a coercao de tipos
 
-            Jogador[] jogadoresArq = (Jogador[]) oin.readObject();
+            Jogador[] jogaArq = (Jogador[]) oin.readObject();
             oin.close();
             fin.close();
-            jogadores = jogadoresArq;
+            jogadores = jogaArq;
             qtdJogadores = 0;
-            i = 0;
-            while (jogadores[i] != null) {
-                qtdJogadores++;
-                i++;
+            
+            for(Jogador j : jogadores) {
+                if(j != null) {
+                    qtdJogadores++;
+                }
             }
 
             System.out.println("Dados lidos com sucesso!\n");

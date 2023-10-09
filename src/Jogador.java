@@ -69,4 +69,9 @@ public class Jogador implements Serializable{
         return r.nextInt(13)+1;
     }
 
+    public void zerarJogadas(){
+        for(int i = 1;i <= 13;i++){
+            jogoG.pontuarJogada(i, -1);
+        }
+    }
 }

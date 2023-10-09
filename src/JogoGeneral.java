@@ -5,9 +5,6 @@ public class JogoGeneral implements Serializable{
 
     private Dado[] dados = new Dado[5];
     private int[] jogadas = new int[13];
-    // private int[] cartela;
-    
-    private int i=0;
 
     public JogoGeneral() {
         for (int i = 0; i < 13; i++) {

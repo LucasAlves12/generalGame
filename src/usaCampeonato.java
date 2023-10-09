@@ -1,8 +1,3 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class usaCampeonato {
@@ -11,9 +6,6 @@ public class usaCampeonato {
         Scanner teclado = new Scanner(System.in);
         char opcao;
         Campeonato c = new Campeonato();
-        String nome;
-        String nomeAux; // variavel para remover pelo nome
-        char p; // variavel de caractere q define se é humano ou maquina
 
         do {
             System.out.println("..:: Menu interativo ::..");
