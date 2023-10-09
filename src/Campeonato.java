@@ -11,7 +11,7 @@ public class Campeonato {
     private int i;
     private int qtdJogadores;
     private int maxJogadores;
-    private File arq = new File("agenda.dat");
+    private File arq = new File("jogoGeneral.dat");
     private Scanner teclado = new Scanner(System.in);
 
     public Campeonato() {
